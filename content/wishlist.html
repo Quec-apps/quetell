@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <script src="res/script/jquery.min.js"></script>
+</head>
+<style>
+@font-face {
+    font-family: din_bold;
+    src: url(res/font/din_bold.ttf);
+}
+body {
+    margin: 0;
+    background-color: white;
+    font-family: din_bold;
+    color: #2c2c2c;
+    user-select: none;
+}
+html, body {
+    overflow-x: hidden;
+}
+.top {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+.title {
+    font-size: 9vw;
+    margin: 0;
+    margin-left: 2vw;
+}
+.sub-title {
+    font-size: 6vw;
+    margin-left: 2vw;
+}
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.box {
+    width: 80vw;
+    padding: 3vw;
+    margin: 3vh 0;
+    background-color: white;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.247);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-radius: 5px;
+} .box:active {
+    opacity: .6;
+}
+.box-img-bg {
+    width: 40%;
+}
+.box-img {
+    width: 25vw;
+    height: 25vw;
+}
+.box-sub {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+.ct-title {
+    width: 100%;
+    font-size: 4.5vw;
+    text-align: center;
+    padding: 5px 0;
+}
+.rating {
+    width: 100%;
+    text-align: center;
+    padding: 4px 0;
+}
+.like-img {
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+}
+</style>
+<body>
+<header class="top">
+    <h1 class="title">QueTell</h1>
+</header>
+
+<div class="bottom-ct">
+    <h2 class="sub-title">Favourite</h2>
+<style>
+.wide-box_bg {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.wide-box {
+    width: 80vw;
+    height: 20vw;
+    margin: 5vh 0;
+    background-color: white;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.247);
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    border-radius: 5px;
+    transition: all 300ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+} .wide-box:active {
+    transition: none!important;
+    opacity: .5!important;
+}
+.wide-img {
+    width: 25vw;
+    height: 25vw;
+    transform: translate(-5vw, -3vw);
+    border-radius: 50%;
+    border: solid 1.5vw #fbb302;
+}
+.wide-txt {
+    font-size: 5vw;
+    text-align: center;
+    margin-right: 5vw;
+    display: flex;
+    align-items: center;
+    color: #9e4829;
+}
+.wide-no_bg {
+    padding: 1vh 2vw;
+    margin-right: 2vw;
+    border-radius: 45%;
+    display: inline-flex;
+    justify-content: center;
+    align-items:center;
+    font-size: 4vw;
+}
+.wishlist-ct {
+    padding: 1vh 3vw;
+    background-color: #fbb302;
+    color: #2c2c2c;
+    border-radius: 20px;
+}
+
+.top, .bottom-ct, content {
+    transform: scale(1.2);
+    opacity: 0;
+    transition: all 300ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+</style>
+    <div class="wide-box_bg">
+        <div class="wide-box akbar-wide_box">
+            <img src="res/poster/akbar.jpg" class="wide-img">
+            <div class="wide-txt">Akbar & Birbal</div>
+            <div class="wide-no_bg"><div class="wishlist-ct akbar-wishlist">0</div></div>
+        </div>
+        <div class="wide-box mullah-wide_box">
+            <img src="res/poster/mullah.jpg" class="wide-img">
+            <div class="wide-txt">Mullah Nasruddin</div>
+            <div class="wide-no_bg"><div class="wishlist-ct mullah-wishlist">0</div></div>
+        </div>
+        <div class="wide-box tenali-wide_box">
+            <img src="res/poster/tenali.jpg" class="wide-img">
+            <div class="wide-txt">Tennali Raman</div>
+            <div class="wide-no_bg"><div class="wishlist-ct tennali-wishlist">0</div></div>
+        </div>
+    </div>
+
+
+    <div class="content" style="display: none;">
+        <!--<div class="box">
+            <img src="res/poster/akbar.jpg" onclick="clickFunc(1)" class="box-img">
+            <div class="ct-title">I found a thief</div>
+            <div class="rating"> <img src="res/icons/like.png" alt="like" class="like-img"><span>10.3k</span></div>
+        </div>-->
+    </div>
+</div>
+<script src="res/script/var/akbar.js"></script>
+<script src="res/script/var/mullah.js"></script>
+<script>
+function intro() {
+setTimeout(() => {$(".top").css({opacity:'1', transform:'scale(1)'});}, 100);
+setTimeout(() => {$(".bottom-ct").css({opacity:'1', transform:'scale(1)'});}, 200);
+}
+intro();
+
+function outro() {
+setTimeout(() => {$(".top").css({opacity:'0', transform:'scale(1.2)'});}, 200);
+setTimeout(() => {$(".bottom-ct").css({opacity:'0', transform:'scale(1.2)'});}, 100);
+}
+
+$(".wide-box").click(function() {
+setTimeout(() => {
+$(".wide-box").css({transform:'scale(1.2)', opacity:'0'});
+}, 100);
+setTimeout(() => {
+    $(".wide-box").fadeOut(0);
+    $(".content").css({display:'flex', transform:'scale(1)', opacity:'1'});
+}, 300);
+});
+
+function clickFunc(openedNumber) {
+outro();
+localStorage.setItem("openedNumber", openedNumber);
+setTimeout(() => {
+    parent.location="collections/"+opened+"/"+openedNumber+"/index.html";    
+}, 600);
+}
+
+
+akbar_total = parseInt(localStorage.getItem("akbar_total"));
+akbar_wishlistCount = 0;
+function checkAkbar() {
+for (let i = 1; i <= akbar_total; i++){
+   if (localStorage.getItem("w_akbar"+i) != null) {
+       akbar_wishlistCount++;
+   }
+   if (akbar_total == i) {
+       $(".akbar-wishlist").html(akbar_wishlistCount);
+   }
+}
+}
+checkAkbar();
+$(".akbar-wide_box").click(function() {
+opened = "akbar";
+$(".box").click(function() {
+localStorage.setItem("opened", opened);
+});
+for (let i = 1; i <= akbar_total; i++){
+   if (localStorage.getItem("w_akbar"+i) != null) {
+$(".content").append(`
+<div class="box box${i}" onclick="clickFunc(${i})">
+    <div class="box-img-bg"><img src="collections/${opened}/${i}/poster.jpg" class="box-img"></div>
+    <div class="box-sub">
+        <div class="ct-title">${window[opened+"_ti"+i]}</div>
+    </div>
+</div>
+`);
+   }
+   if (akbar_total == i) {
+       $(".akbar-wishlist").html(akbar_wishlistCount);
+   }
+}
+});
+
+mullah_total = parseInt(localStorage.getItem("mullah_total"));
+mullah_wishlistCount = 0;
+function checkMullah() {
+for (let i = 1; i <= mullah_total; i++){
+   if (localStorage.getItem("w_mullah"+i) != null) {
+       mullah_wishlistCount++;
+   }
+   if (mullah_total == i) {
+       $(".mullah-wishlist").html(mullah_wishlistCount);
+   }
+}
+}
+checkMullah();
+$(".mullah-wide_box").click(function() {
+opened = "mullah";
+localStorage.setItem("opened", opened);
+for (let i = 1; i <= mullah_total; i++){
+   if (localStorage.getItem("w_mullah"+i) != null) {
+$(".content").append(`
+<div class="box box${i}" onclick="clickFunc(${i})">
+    <div class="box-img-bg"><img src="collections/${opened}/${i}/poster.jpg" class="box-img"></div>
+    <div class="box-sub">
+        <div class="ct-title">${window[opened+"_ti"+i]}</div>
+    </div>
+</div>
+`);
+   }
+   if (mullah_total == i) {
+       $(".mullah-wishlist").html(mullah_wishlistCount);
+   }
+}
+});
+
+
+tenali_total = parseInt(localStorage.getItem("tenali_total"));
+tenali_wishlistCount = 0;
+function checkTenali() {
+for (let i = 1; i <= tenali_total; i++){
+   if (localStorage.getItem("w_tenali"+i) != null) {
+        tenali_wishlistCount++;
+   }
+   if (tenali_total == i) {
+       $(".tenali-wishlist").html(tenali_wishlistCount);
+   }
+}
+}
+checkTenali();
+$(".tenali-wide_box").click(function() {
+opened = "tenali";
+localStorage.setItem("opened", opened);
+for (let i = 1; i <= tenali_total; i++){
+   if (localStorage.getItem("w_tenali"+i) != null) {
+$(".content").append(`
+<div class="box box${i}" onclick="clickFunc(${i})">
+    <div class="box-img-bg"><img src="collections/${opened}/${i}/poster.jpg" class="box-img"></div>
+    <div class="box-sub">
+        <div class="ct-title">${window[opened+"_ti"+i]}</div>
+    </div>
+</div>
+`);
+   }
+   if (tenali_total == i) {
+       $(".tenali-wishlist").html(tenali_wishlistCount);
+   }
+}
+});
+</script>
+</body>
+</html>
