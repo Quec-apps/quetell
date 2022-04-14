@@ -48,6 +48,7 @@ setTimeout(() => {$(".bottom-ct").css({opacity:'0', transform:'scale(1.2)'});}, 
 opened = localStorage.getItem("opened");
 function clickFunc(openedNumber) {
 outro();
+localStorage.setItem("liked", window[opened+"_li"+openedNumber]);
 localStorage.setItem("openedNumber", openedNumber);
 setTimeout(() => {
     parent.location=""+openedNumber+"/index.html";
@@ -87,3 +88,10 @@ if (localStorage.getItem("c_"+opened+i) != null) {
     $(".complete"+i).css({visibility:'visible'});
 }
 }
+
+$(".back-img").click(function() {
+outro();
+setTimeout(() => {
+    window.history.back();
+}, 600);
+});

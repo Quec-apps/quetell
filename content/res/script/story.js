@@ -34,15 +34,15 @@ $("img").attr("onerror", "imageError();");
 
 function intro() {
 setTimeout(() => {$(".top").css({opacity:'1', transform:'scale(1)'});}, 100);
-setTimeout(() => {$(".mid").css({opacity:'1', transform:'scale(1)'});}, 200);
-setTimeout(() => {$(".content").css({opacity:'1', transform:'scale(1)'});}, 300);
+setTimeout(() => {$(".mid").css({opacity:'1', transform:'translateY(-100%) scale(1)'});}, 200);
+setTimeout(() => {$(".content").css({opacity:'1', transform:'translateX(0)'});}, 300);
 }
 intro();
 
 function outro() {
 setTimeout(() => {$(".top").css({opacity:'0', transform:'scale(1.2)'});}, 300);
-setTimeout(() => {$(".recent-box").css({opacity:'0', transform:'scale(1.2)'});}, 200);
-setTimeout(() => {$(".bottom-ct").css({opacity:'0', transform:'scale(1.2)'});}, 100);
+setTimeout(() => {$(".mid").css({opacity:'0', transform:'translateY(0%), scale(1.2)'});}, 200);
+setTimeout(() => {$(".content").css({opacity:'0', transform:'translateX(-2vw)'});}, 100);
 }
 
 opened = localStorage.getItem("opened");
@@ -71,8 +71,10 @@ checkMode();
 $(".mode").click(function() {
 if (mode == "dark") {
     mode = "light";
+    toast("Dark mode turned off");
 } else {
     mode = "dark";
+    toast("Dark mode turned on");
 }
 localStorage.setItem("mode", mode);
 checkMode();
@@ -110,6 +112,7 @@ if (textSize >= 6) {
 } else {
     textSize++;
 }
+toast("Text size changed");
 localStorage.setItem("textSize", textSize);
 checkTextSize();
 });
@@ -125,8 +128,10 @@ checkWishlist();
 $(".wishlist").click(function() {
 if (localStorage.getItem("w_"+opened+openedNumber) == null) {
 localStorage.setItem("w_"+opened+openedNumber, $("h1").text());
+toast("Added to favourite");
 } else {
 localStorage.removeItem("w_"+opened+openedNumber);  
+toast("Removed from favourite");
 }
 checkWishlist();
 });
@@ -142,8 +147,10 @@ checkComplete();
 $(".complete").click(function() {
 if (localStorage.getItem("c_"+opened+openedNumber) == null) {
 localStorage.setItem("c_"+opened+openedNumber, $("h1").text());
+toast("Completed this story");
 } else {
-localStorage.removeItem("c_"+opened+openedNumber);  
+localStorage.removeItem("c_"+opened+openedNumber);
+toast("Removed from Completed story");
 }
 checkComplete();
 });
@@ -159,8 +166,10 @@ checkLike();
 $(".like").click(function() {
 if (localStorage.getItem("l_"+opened+openedNumber) == null) {
     localStorage.setItem("l_"+opened+openedNumber, 1);
+    toast("You liked this story");
 } else {
     localStorage.removeItem("l_"+opened+openedNumber);
+    toast("You unliked this story");
 }
 checkLike();
 });
@@ -180,7 +189,14 @@ $(".prev").click(function() {
     setTimeout(() => {
         location.replace("../"+openedNumber+"/index.html");
     }, 600);
-    });
+});
+
+$(".back-img").click(function() {
+outro();
+setTimeout(() => {
+    window.history.back();
+}, 600);
+});
 
 if (localStorage.getItem(opened+"_total") == openedNumber) {
     $(".next").css({opacity:'.5'});
@@ -192,6 +208,13 @@ if (openedNumber == 1) {
 }
 
 
+function toast(text) {
+$(".toast").html(text);
+$(".toast").fadeIn();
+setTimeout(() => {
+    $(".toast").fadeOut();
+}, 1000);
+}
 
 
 
