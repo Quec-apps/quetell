@@ -10,6 +10,7 @@ body {
     background-color: white;
     font-family: Roboto;
     margin: 0;
+    user-select: none;
 
 }
 html, body {
