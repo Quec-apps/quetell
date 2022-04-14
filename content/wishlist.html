@@ -226,6 +226,7 @@ setTimeout(() => {
 
 function clickFunc(openedNumber) {
 outro();
+localStorage.setItem("opened", opened);
 localStorage.setItem("openedNumber", openedNumber);
 setTimeout(() => {
     parent.location="collections/"+opened+"/"+openedNumber+"/index.html";    
@@ -248,9 +249,6 @@ for (let i = 1; i <= akbar_total; i++){
 checkAkbar();
 $(".akbar-wide_box").click(function() {
 opened = "akbar";
-$(".box").click(function() {
-localStorage.setItem("opened", opened);
-});
 for (let i = 1; i <= akbar_total; i++){
    if (localStorage.getItem("w_akbar"+i) != null) {
 $(".content").append(`
@@ -283,7 +281,6 @@ for (let i = 1; i <= mullah_total; i++){
 checkMullah();
 $(".mullah-wide_box").click(function() {
 opened = "mullah";
-localStorage.setItem("opened", opened);
 for (let i = 1; i <= mullah_total; i++){
    if (localStorage.getItem("w_mullah"+i) != null) {
 $(".content").append(`
@@ -317,7 +314,6 @@ for (let i = 1; i <= tenali_total; i++){
 checkTenali();
 $(".tenali-wide_box").click(function() {
 opened = "tenali";
-localStorage.setItem("opened", opened);
 for (let i = 1; i <= tenali_total; i++){
    if (localStorage.getItem("w_tenali"+i) != null) {
 $(".content").append(`
