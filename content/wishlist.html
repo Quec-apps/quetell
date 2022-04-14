@@ -23,9 +23,28 @@ html, body {
     overflow-x: hidden;
 }
 .top {
+    width: 100%;
     height: 10vh;
     display: flex;
+    background-color: white;
+    justify-content: space-between;
     align-items: center;
+    position: fixed; top: 0; left: 0;
+    z-index: 1;
+}
+.top-hide {
+    height: 10vh;
+}
+.title-bg {
+    display: flex;
+    align-items: center;
+}
+.back-img {
+    width: 8vw;
+    height: 8vw;
+    margin-left: 2vw;
+} .back-img:active {
+    opacity: .6;
 }
 .title {
     font-size: 9vw;
@@ -86,9 +105,13 @@ html, body {
 }
 </style>
 <body>
-<header class="top">
-    <h1 class="title">QueTell</h1>
-</header>
+<div class="top">
+    <div class="title-bg">
+        <img src="res/icons/back.png" class="back-img">
+        <h1 class="title">QueTell</h1>
+    </div>
+</div>
+<div class="top-hide"></div>
 
 <div class="bottom-ct">
     <h2 class="sub-title">Favourite</h2>
@@ -310,6 +333,13 @@ $(".content").append(`
        $(".tenali-wishlist").html(tenali_wishlistCount);
    }
 }
+});
+
+$(".back-img").click(function() {
+outro();
+setTimeout(() => {
+    window.history.back();
+}, 600);
 });
 </script>
 </body>
