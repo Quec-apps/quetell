@@ -30,6 +30,17 @@ html, body {
 .top-hide {
     height: 10vh;
 }
+.title-bg {
+    display: flex;
+    align-items: center;
+}
+.back-img {
+    width: 8vw;
+    height: 8vw;
+    margin-left: 2vw;
+} .back-img:active {
+    opacity: .6;
+}
 .title {
     font-size: 9vw;
     margin: 0;
