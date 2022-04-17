@@ -80,27 +80,6 @@ localStorage.setItem("mode", mode);
 checkMode();
 });
 
-function checkLang() {
-lang = localStorage.getItem("lang");
-    if (lang == "mal") {
-    $(".mal").fadeIn(0);
-    $(".eng").fadeOut(0);
-} else {
-    $(".mal").fadeOut(0);
-    $(".eng").fadeIn(0);
-}
-}
-checkLang();
-$(".lang").click(function() {
-if (lang == "mal") {
-lang = "eng"
-} else {
-    lang = "mal"
-}
-localStorage.setItem("lang", lang);
-checkLang();
-});
-
 function checkTextSize() {
     textSize = parseInt(localStorage.getItem("textSize"));
     $("p").css({fontSize: textSize+'vw'});
