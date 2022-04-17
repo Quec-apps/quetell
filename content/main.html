@@ -179,6 +179,10 @@ body, html {
             <img src="res/poster/tenali.jpg" class="box-img">
             <div class="ct-title">Tenali Raman</div>
         </div>
+        <div class="box panchatantra">
+            <img src="res/poster/panchatantra.jpg" class="box-img">
+            <div class="ct-title">Panchatantra</div>
+        </div>
         <div class="box aesop">
             <img src="res/poster/aesop.jpg" class="box-img">
             <div class="ct-title">Aesop's Fables</div>
@@ -235,8 +239,7 @@ setTimeout(() => {$(".recent-box").css({opacity:'0', transform:'scale(1.2)'});},
 setTimeout(() => {$(".bottom-ct").css({opacity:'0', transform:'scale(1.2)'});}, 100);
 }
 
-if (localStorage.getItem("lang") == null) {
-    localStorage.setItem("lang", "mal");
+if (localStorage.getItem("mode") == null) {
     localStorage.setItem("mode", "light");
     localStorage.setItem("textSize", 5)
 }
@@ -271,6 +274,20 @@ outro();
 localStorage.setItem("opened", "tenali");
 setTimeout(() => {
     parent.location="collections/tenali/storylist.html";
+}, 600);
+});
+$(".panchatantra").click(function() {
+outro();
+localStorage.setItem("opened", "panchatantra");
+setTimeout(() => {
+    parent.location="collections/panchatantra/storylist.html";
+}, 600);
+});
+$(".aesop").click(function() {
+outro();
+localStorage.setItem("opened", "aesop");
+setTimeout(() => {
+    parent.location="collections/aesop/storylist.html";
 }, 600);
 });
 

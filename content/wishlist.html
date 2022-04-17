@@ -189,6 +189,11 @@ html, body {
             <div class="wide-txt">Tennali Raman</div>
             <div class="wide-no_bg"><div class="wishlist-ct tennali-wishlist">0</div></div>
         </div>
+        <div class="wide-box panchatantra-wide_box">
+            <img src="res/poster/panchatantra.jpg" class="wide-img">
+            <div class="wide-txt">Panchatantra</div>
+            <div class="wide-no_bg"><div class="wishlist-ct panchatantra-wishlist">0</div></div>
+        </div>
     </div>
 
 
@@ -202,6 +207,7 @@ html, body {
 </div>
 <script src="res/script/var/akbar.js"></script>
 <script src="res/script/var/mullah.js"></script>
+<script src="res/script/var/panchatantra.js"></script>
 <script>
 function intro() {
 setTimeout(() => {$(".top").css({opacity:'1', transform:'scale(1)'});}, 100);
@@ -327,6 +333,39 @@ $(".content").append(`
    }
    if (tenali_total == i) {
        $(".tenali-wishlist").html(tenali_wishlistCount);
+   }
+}
+});
+
+
+panchatantra_total = parseInt(localStorage.getItem("panchatantra_total"));
+panchatantra_wishlistCount = 0;
+function checkPanchatantra() {
+for (let i = 1; i <= panchatantra_total; i++){
+   if (localStorage.getItem("w_panchatantra"+i) != null) {
+        panchatantra_wishlistCount++;
+   }
+   if (panchatantra_total == i) {
+       $(".panchatantra-wishlist").html(panchatantra_wishlistCount);
+   }
+}
+}
+checkPanchatantra();
+$(".panchatantra-wide_box").click(function() {
+opened = "panchatantra";
+for (let i = 1; i <= panchatantra_total; i++){
+   if (localStorage.getItem("w_panchatantra"+i) != null) {
+$(".content").append(`
+<div class="box box${i}" onclick="clickFunc(${i})">
+    <div class="box-img-bg"><img src="collections/${opened}/${i}/poster.jpg" class="box-img"></div>
+    <div class="box-sub">
+        <div class="ct-title">${window[opened+"_ti"+i]}</div>
+    </div>
+</div>
+`);
+   }
+   if (panchatantra_total == i) {
+       $(".tenali-wishlist").html(panchatantra_wishlistCount);
    }
 }
 });
