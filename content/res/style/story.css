@@ -2,15 +2,14 @@
     font-family: Roboto;
     src: url(../font/Roboto-Bold.ttf);
 }
-@font-face {
+/*@font-face {
     font-family: Baloo;
     src: url(../font/BalooChettan2-Bold.ttf);
-}
+}*/
 body {
     background-color: white;
     font-family: Roboto;
     margin: 0;
-    user-select: none;
 
 }
 html, body {
@@ -59,6 +58,7 @@ html, body {
 } .button:active {
     opacity: .8;
 }
+.lang {display: none;}
 .content {
     color: #636265;
     transform: translateX(2vw);
@@ -71,7 +71,7 @@ p {
     text-align: justify;
 }
 .mal {
-    font-family: Baloo;
+    /*font-family: Baloo;*/
     display: none;
 }
 .poster-bg {
